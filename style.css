@@ -67,7 +67,14 @@ body {
     border-radius: 12px;
     background: #FFF;
     border: none;
-
+}
+.level-button-active{
+    scale: 1.2;
+    border: 3px solid #44D2FF;
+}
+.level-button:hover {
+    scale: 1.2;
+    border: 3px solid #44D2FF;
 }
 
 .start-button {
@@ -80,4 +87,8 @@ body {
     border-radius: 12px;
     background: var(--salad-60, #7AC100);
     border: none;
+}
+.start-button:hover {
+    scale: 1.03;
+    border: 3px solid #44D2FF;
 }
