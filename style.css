@@ -7,8 +7,17 @@
     font-family: "StratosSkyeng";
     font-style: normal;
     font-weight: 400;
-    src: local("StratosSkyeng"), url(../Разное/statosskyeng-v1.001/Web\ fonts/stratosskyengweb-regular.woff2);
+    font-display: swap;
+    src: url("./assets/fonts/stratosskyengweb-regular.woff2") format("woff2");
 }
+
+/* @font-face {
+    font-family: "StratosSkyeng";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("./assets/fonts/stratosskyengweb-medium.woff2") format("woff2");
+  } */
 
 body {
     font-family: "StratosSkyeng";
@@ -24,7 +33,7 @@ body {
     background: var(--blue-120, #004980);
 }
 
-.game-difficulty {
+.game-difficulty, .win-game {
     width: 480px;
     height: 459px;
     display: flex;
@@ -34,6 +43,10 @@ body {
     flex-shrink: 0;
     border-radius: 12px;
     background: #C2F5FF;
+    padding-top: 26px;
+}
+.win-game{
+    display: none;
 }
 
 .difficulty-title {
@@ -41,13 +54,13 @@ body {
     text-align: center;
     width: 208px;
     height: 96px;
-    padding-top: 52px;
+    padding-top: 26px;
     font-size: 40px;
     font-family: StratosSkyeng;
     line-height: 48px;
 }
 
-.level-buttons {
+.radio-inputs {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -56,11 +69,17 @@ body {
     align-items: center;
     gap: 26px;
     padding: 48px 0 67px 0;
+    border: none;
 }
 
 .level-button {
     width: 98px;
     height: 98px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
     color: var(--blue-100, #0080C1);
     font-size: 64px;
     font-family: StratosSkyeng;
@@ -68,12 +87,18 @@ body {
     background: #FFF;
     border: none;
 }
-.level-button-active{
-    scale: 1.2;
+
+.level-button:hover {
+    scale: 1.03;
     border: 3px solid #44D2FF;
 }
-.level-button:hover {
-    scale: 1.2;
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked+.level-button {
+    scale: 1.15;
     border: 3px solid #44D2FF;
 }
 
@@ -88,7 +113,41 @@ body {
     background: var(--salad-60, #7AC100);
     border: none;
 }
+
 .start-button:hover {
     scale: 1.03;
     border: 3px solid #44D2FF;
+}
+
+.image {
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+    background: url(./assets/images/celebration.png);
+}
+
+.win-title {
+    color: var(--blue-120, #004980);
+    /* Pres → Text M */
+    font-size: 40px;
+    font-family: StratosSkyeng;
+    line-height: 48px;
+    width: 256px;
+    padding: 9px 0 28px 0;
+}
+
+
+.time-text {
+    color: #000;
+    font-size: 24px;
+    font-family: StratosSkyeng;
+    line-height: 32px;
+}
+
+.time-value {
+    color: #000;
+    font-size: 64px;
+    font-family: StratosSkyeng;
+    line-height: 72px;
+    padding: 10px 0 40px 0;
 }
