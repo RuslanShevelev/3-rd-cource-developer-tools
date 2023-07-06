@@ -1,3 +1,6 @@
+import { getCardsArray } from "./utils.js";
+
+
 let appEl = document.getElementById("app");
 
 function renderDifficultyComponent() {
@@ -36,9 +39,36 @@ function renderDifficultyComponent() {
 renderDifficultyComponent();
 
 function renderGameComponent(level) {
+    const cards = getCardsArray(level);
+    // console.log(cards);
+    const cardsHtml = cards.map((card) => getCardHTML(card)).join("");
+    console.log(cardsHtml);
     const appHtml = `
-    <div class="play-field">
-    <p>Здесь будет ${level} карт</p>
+    <div class="game-header">
+    <div class="timer">
+    <div class="timer-title">
+    <p class="time-labels">min</p>
+    <p class="time-labels">sek</p>
+    </div>
+    <p class="time">00.00</p>
+    </div>
+    <button class="restart">Начать заново</button>
+    </div>
+    <div class="play-field level-${level}">
+    <ul>${cardsHtml}</ul>
     </div>`;
     appEl.innerHTML = appHtml;
+    // let playingCards = appEl.querySelectorAll(".card");
+
+    let playingCards = appEl.querySelectorAll(".card");
+    for (const playingCard of playingCards) {
+        setTimeout(() => playingCard.classList.add('hide'), 5000)
+    }
+};
+function getCardHTML(card) {
+    return `<li class="shirt">
+    <div class="card">
+        <img src="${card}" alt = "карта">
+    </div>
+    `
 };

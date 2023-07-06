@@ -28,9 +28,11 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
     background: var(--blue-120, #004980);
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 .game-difficulty, .win-game {
@@ -44,8 +46,10 @@ body {
     border-radius: 12px;
     background: #C2F5FF;
     padding-top: 26px;
+    margin-top: 158px;
 }
-.win-game{
+
+.win-game {
     display: none;
 }
 
@@ -73,8 +77,9 @@ body {
     height: 213px;
     box-sizing: border-box;
 }
-label{
-        width: 108px;
+
+label {
+    width: 108px;
     height: 108px;
     box-sizing: border-box;
     display: flex;
@@ -112,7 +117,7 @@ input[type="radio"]:checked+.level-button {
     border: 3px solid #44D2FF;
 }
 
-.start-button {
+.start-button, .restart {
     width: 246px;
     height: 48px;
     color: #FFF;
@@ -161,9 +166,87 @@ input[type="radio"]:checked+.level-button {
     line-height: 72px;
     padding: 10px 0 40px 0;
 }
-.play-field{
-    color: #FFF;
-    font-size: 64px;
-    font-family: StratosSkyeng;
 
+.play-field {
+    display: flex;
+    width: 976px;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.level-6 {
+    width: 320px;
+}
+
+.level-12 {
+    width: 430px;
+}
+
+.level-18 {
+    width: 650px;
+}
+
+.game-header {
+    margin: 22px 0 35px 0;
+    width: 976px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timer {
+    font-family: StratosSkyeng;
+    font-weight: 400;
+    color: #FFFFFF;
+    width: 155px;
+    height: 91px;
+}
+
+.time {
+    font-size: 64px;
+    line-height: 72px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.time-labels {
+    font-family: StratosSkyeng;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 32px;
+    padding-right: 5px;
+}
+
+.timer-title {
+    width: 155px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    gap: 52px;
+}
+.shirt {
+    width: 95px;
+    height: 133px;
+    background-image: url(.//assets/images/cards/рубашка.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.hide {
+    display: none;
 }
