@@ -1,0 +1,33 @@
+{
+  "name": "3-rd-cource-developer-tools-1",
+  "version": "1.0.0",
+  "description": "developer tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 3004",
+    "format": "prettier --write ./",
+    "lint:js": "eslint ./*.js",
+    "lint:css": "stylelint ./*.css",
+    "prepare": "husky install",
+    "dev": "webpack --mode development --watch",
+    "lint": "npm run lint:js && npm run lint:css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.8",
+    "stylelint": "^15.10.1",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-prettier": "^3.0.0",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
