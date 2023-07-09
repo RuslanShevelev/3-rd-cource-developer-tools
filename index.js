@@ -1,7 +1,9 @@
+import { getCardsArray } from "./utils.js";
+
 let appEl = document.getElementById("app");
 
 function renderDifficultyComponent() {
-    const appHtml = `
+  const appHtml = `
     <form action="#" class="game-difficulty">
     <h3 class="difficulty-title">Выбери сложность</h3>
     <fieldset class="radio-inputs">
@@ -17,28 +19,54 @@ function renderDifficultyComponent() {
     </fieldset>
     <button class="start-button">Старт</button>
 </form>`;
-    appEl.innerHTML = appHtml;
+  appEl.innerHTML = appHtml;
 
-    appEl.querySelector(".start-button").onclick = () => {
-        const levels = appEl.querySelectorAll('input[name="difficulty"]');
-        for (const level of levels) {
-            if (level.checked) {
-                console.log(level.value)
-                const gameLevel = level.value;
-                renderGameComponent(gameLevel);
-            };
-            // alert("Сначала нужно выбрать уровень сложности");
-        };
-    };
-
-};
+  appEl.querySelector(".start-button").onclick = () => {
+    const levels = appEl.querySelectorAll('input[name="difficulty"]');
+    for (const level of levels) {
+      if (level.checked) {
+        console.log(level.value);
+        const gameLevel = level.value;
+        renderGameComponent(gameLevel);
+      }
+      // alert("Сначала нужно выбрать уровень сложности");
+    }
+  };
+}
 
 renderDifficultyComponent();
 
 function renderGameComponent(level) {
-    const appHtml = `
-    <div class="play-field">
-    <p>Здесь будет ${level} карт</p>
+  const cards = getCardsArray(level);
+  // console.log(cards);
+  const cardsHtml = cards.map((card) => getCardHTML(card)).join("");
+  console.log(cardsHtml);
+  const appHtml = `
+    <div class="game-header">
+    <div class="timer">
+    <div class="timer-title">
+    <p class="time-labels">min</p>
+    <p class="time-labels">sek</p>
+    </div>
+    <p class="time">00.00</p>
+    </div>
+    <button class="restart">Начать заново</button>
+    </div>
+    <div class="play-field level-${level}">
+    <ul>${cardsHtml}</ul>
     </div>`;
-    appEl.innerHTML = appHtml;
-};
+  appEl.innerHTML = appHtml;
+  // let playingCards = appEl.querySelectorAll(".card");
+
+  let playingCards = appEl.querySelectorAll(".card");
+  for (const playingCard of playingCards) {
+    setTimeout(() => playingCard.classList.add("hide"), 5000);
+  }
+}
+function getCardHTML(card) {
+  return `<li class="shirt">
+    <div class="card">
+        <img src="${card}" alt = "карта">
+    </div>
+    `;
+}

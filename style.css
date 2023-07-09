@@ -1,14 +1,14 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 @font-face {
-    font-family: "StratosSkyeng";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("./assets/fonts/stratosskyengweb-regular.woff2") format("woff2");
+  font-family: StratosSkyeng;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/stratosskyengweb-regular.woff2") format("woff2");
 }
 
 /* @font-face {
@@ -20,150 +20,231 @@
   } */
 
 body {
-    font-family: "StratosSkyeng";
-    font-style: normal;
+  font-family: StratosSkyeng;
+  font-style: normal;
 }
 
 .container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--blue-120, #004980);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--blue-120, #004980);
+  flex-flow: column wrap;
+  align-content: center;
 }
 
-.game-difficulty, .win-game {
-    width: 480px;
-    height: 459px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    border-radius: 12px;
-    background: #C2F5FF;
-    padding-top: 26px;
+.game-difficulty,
+.win-game {
+  width: 480px;
+  height: 459px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #c2f5ff;
+  padding-top: 26px;
+  margin-top: 158px;
 }
-.win-game{
-    display: none;
+
+.win-game {
+  display: none;
 }
 
 .difficulty-title {
-    color: #004980;
-    text-align: center;
-    width: 208px;
-    height: 96px;
-    padding-top: 26px;
-    font-size: 40px;
-    font-family: StratosSkyeng;
-    line-height: 48px;
+  color: #004980;
+  text-align: center;
+  width: 208px;
+  height: 96px;
+  padding-top: 26px;
+  font-size: 40px;
+  font-family: StratosSkyeng;
+  line-height: 48px;
 }
 
 .radio-inputs {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    padding: 48px 0 67px 0;
-    border: none;
-    height: 213px;
-    box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 48px 0 67px;
+  border: none;
+  height: 213px;
+  box-sizing: border-box;
 }
-label{
-        width: 108px;
-    height: 108px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+label {
+  width: 108px;
+  height: 108px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .level-button {
-    width: 98px;
-    height: 98px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    color: var(--blue-100, #0080C1);
-    font-size: 64px;
-    font-family: StratosSkyeng;
-    border-radius: 12px;
-    background: #FFF;
-    border: none;
+  width: 98px;
+  height: 98px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--blue-100, #0080c1);
+  font-size: 64px;
+  font-family: StratosSkyeng;
+  border-radius: 12px;
+  background: #fff;
+  border: none;
 }
 
 .level-button:hover {
-    scale: 1.07;
-    border: 3px solid #44D2FF;
+  scale: 1.07;
+  border: 3px solid #44d2ff;
 }
 
 input[type="radio"] {
-    display: none;
+  display: none;
 }
 
-input[type="radio"]:checked+.level-button {
-    scale: 1.15;
-    border: 3px solid #44D2FF;
+input[type="radio"]:checked + .level-button {
+  scale: 1.15;
+  border: 3px solid #44d2ff;
 }
 
-.start-button {
-    width: 246px;
-    height: 48px;
-    color: #FFF;
-    font-size: 24px;
-    font-family: StratosSkyeng;
-    line-height: 32px;
-    border-radius: 12px;
-    background: var(--salad-60, #7AC100);
-    border: none;
+.start-button,
+.restart {
+  width: 246px;
+  height: 48px;
+  color: #fff;
+  font-size: 24px;
+  font-family: StratosSkyeng;
+  line-height: 32px;
+  border-radius: 12px;
+  background: var(--salad-60, #7ac100);
+  border: none;
 }
 
 .start-button:hover {
-    scale: 1.03;
-    border: 3px solid #44D2FF;
+  scale: 1.03;
+  border: 3px solid #44d2ff;
 }
 
 .image {
-    width: 96px;
-    height: 96px;
-    flex-shrink: 0;
-    background: url(./assets/images/celebration.png);
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  background: url("./assets/images/celebration.png");
 }
 
 .win-title {
-    color: var(--blue-120, #004980);
-    /* Pres → Text M */
-    font-size: 40px;
-    font-family: StratosSkyeng;
-    line-height: 48px;
-    width: 256px;
-    padding: 9px 0 28px 0;
+  color: var(--blue-120, #004980);
+
+  /* Pres → Text M */
+  font-size: 40px;
+  font-family: StratosSkyeng;
+  line-height: 48px;
+  width: 256px;
+  padding: 9px 0 28px;
 }
 
-
 .time-text {
-    color: #000;
-    font-size: 24px;
-    font-family: StratosSkyeng;
-    line-height: 32px;
+  color: #000;
+  font-size: 24px;
+  font-family: StratosSkyeng;
+  line-height: 32px;
 }
 
 .time-value {
-    color: #000;
-    font-size: 64px;
-    font-family: StratosSkyeng;
-    line-height: 72px;
-    padding: 10px 0 40px 0;
+  color: #000;
+  font-size: 64px;
+  font-family: StratosSkyeng;
+  line-height: 72px;
+  padding: 10px 0 40px;
 }
-.play-field{
-    color: #FFF;
-    font-size: 64px;
-    font-family: StratosSkyeng;
 
+.play-field {
+  display: flex;
+  width: 976px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.level-6 {
+  width: 320px;
+}
+
+.level-12 {
+  width: 430px;
+}
+
+.level-18 {
+  width: 650px;
+}
+
+.game-header {
+  margin: 22px 0 35px;
+  width: 976px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer {
+  font-family: StratosSkyeng;
+  font-weight: 400;
+  color: #fff;
+  width: 155px;
+  height: 91px;
+}
+
+.time {
+  font-size: 64px;
+  line-height: 72px;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.time-labels {
+  font-family: StratosSkyeng;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 32px;
+  padding-right: 5px;
+}
+
+.timer-title {
+  width: 155px;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  align-content: center;
+  align-items: center;
+  gap: 52px;
+}
+
+.shirt {
+  width: 95px;
+  height: 133px;
+  background-image: url(".//assets/images/cards/рубашка.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.hide {
+  display: none;
 }
