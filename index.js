@@ -1,6 +1,10 @@
 import { getCardsArray } from "./utils.js";
+import "./style.css";
 
 let appEl = document.getElementById("app");
+let firstCard = null;
+let secondCard = null;
+let clickable = true;
 
 function renderDifficultyComponent() {
   const appHtml = `
@@ -25,11 +29,9 @@ function renderDifficultyComponent() {
     const levels = appEl.querySelectorAll('input[name="difficulty"]');
     for (const level of levels) {
       if (level.checked) {
-        console.log(level.value);
         const gameLevel = level.value;
         renderGameComponent(gameLevel);
       }
-      // alert("Сначала нужно выбрать уровень сложности");
     }
   };
 }
@@ -38,9 +40,7 @@ renderDifficultyComponent();
 
 function renderGameComponent(level) {
   const cards = getCardsArray(level);
-  // console.log(cards);
   const cardsHtml = cards.map((card) => getCardHTML(card)).join("");
-  console.log(cardsHtml);
   const appHtml = `
     <div class="game-header">
     <div class="timer">
@@ -53,20 +53,58 @@ function renderGameComponent(level) {
     <button class="restart">Начать заново</button>
     </div>
     <div class="play-field level-${level}">
-    <ul>${cardsHtml}</ul>
+    <ul id="cards">${cardsHtml}</ul>
     </div>`;
   appEl.innerHTML = appHtml;
-  // let playingCards = appEl.querySelectorAll(".card");
 
-  let playingCards = appEl.querySelectorAll(".card");
-  for (const playingCard of playingCards) {
-    setTimeout(() => playingCard.classList.add("hide"), 5000);
+  function getCardHTML(card) {
+    return `<li class="shirt">
+      <div class="card">
+          <img src="${card}" alt = "карта">
+      </div>
+      `;
   }
-}
-function getCardHTML(card) {
-  return `<li class="shirt">
-    <div class="card">
-        <img src="${card}" alt = "карта">
-    </div>
-    `;
+  let cardsShirts = appEl.querySelectorAll(".shirt");
+  cardsShirts.forEach((cardsShirt, index) => {
+    setTimeout(() => cardsShirt.firstElementChild.classList.add("hide"), 5000);
+    cardsShirt.addEventListener("click", () => {
+      if (clickable === true && !cardsShirt.classList.contains("success")) {
+        cardsShirt.firstElementChild.classList.remove("hide");
+        if (firstCard === null) {
+          firstCard = index;
+        } else {
+          if (index !== firstCard) {
+            secondCard = index;
+            clickable = false;
+          }
+        }
+        if (
+          firstCard !== null &&
+          secondCard !== null &&
+          firstCard !== secondCard
+        ) {
+          if (cards[firstCard] === cards[secondCard]) {
+            cardsShirts[firstCard].classList.add("success");
+            cardsShirts[secondCard].classList.add("success");
+            firstCard = null;
+            secondCard = null;
+            clickable = true;
+          } else {
+            cardsShirts[firstCard].firstElementChild.classList.add("hide");
+            cardsShirts[secondCard].firstElementChild.classList.add("hide");
+            firstCard = null;
+            secondCard = null;
+            clickable = true;
+          }
+        }
+        if (
+          Array.from(cardsShirts).every((cardsShirt) =>
+            cardsShirt.classList.contains("success")
+          )
+        ) {
+          alert("Вы выиграли");
+        }
+      }
+    });
+  });
 }
