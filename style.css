@@ -1,3 +1,9 @@
+@import url("./confetti.css");
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   font-family: StratosSkyeng;
   font-style: normal;
@@ -39,10 +45,6 @@ body {
   background: #c2f5ff;
   padding-top: 26px;
   margin-top: 158px;
-}
-
-.win-game {
-  display: none;
 }
 
 .difficulty-title {
@@ -130,7 +132,10 @@ input[type="radio"]:checked + .level-button {
   width: 96px;
   height: 96px;
   flex-shrink: 0;
-  background: url("./assets/images/celebration.png");
+}
+
+.win-game {
+  z-index: 1;
 }
 
 .win-title {
@@ -138,7 +143,7 @@ input[type="radio"]:checked + .level-button {
   font-size: 40px;
   font-family: StratosSkyeng;
   line-height: 48px;
-  width: 256px;
+  width: 280px;
   padding: 9px 0 28px;
 }
 
@@ -181,7 +186,7 @@ ul {
 }
 
 .level-18 {
-  width: 650px;
+  width: 690px;
 }
 
 .game-header {
@@ -233,12 +238,18 @@ ul {
   background-image: url(".//assets/images/cards/рубашка.png");
   background-size: contain;
   background-repeat: no-repeat;
+  transition: all 0.2s linear;
+}
+
+.shirt.flip {
+  transform: perspective(100px) rotateY(180deg);
 }
 
 .hide {
+  transition: all 0.2s linear;
   display: none;
 }
 
 .success {
-  border: 3px solid #44d2ff;
+  box-sizing: border-box;
 }
