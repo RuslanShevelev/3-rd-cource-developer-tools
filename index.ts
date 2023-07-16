@@ -15,19 +15,17 @@ export function playGame(cards: string[]) {
   if (appEl) {
     let cardsShirts = appEl.querySelectorAll(".shirt");
     cardsShirts.forEach((cardsShirt, index) => {
-      setTimeout(
-        () => cardsShirt.firstElementChild?.classList.add("hide"),
-        5000
-      );
-      setTimeout(() => cardsShirt.classList.add("flip"), 5000);
+      setTimeout(() => {
+        cardsShirt.firstElementChild?.classList.add("hide");
+        cardsShirt.classList.add("flip");
+      }, 5000);
 
       cardsShirt.addEventListener("click", () => {
         if (clickable === true && !cardsShirt.classList.contains("success")) {
-          setTimeout(() => cardsShirt.classList.remove("flip"), 200);
-          setTimeout(
-            () => cardsShirt.firstElementChild?.classList.remove("hide"),
-            200
-          );
+          setTimeout(() => {
+            cardsShirt.classList.remove("flip");
+            cardsShirt.firstElementChild?.classList.remove("hide");
+          }, 200);
 
           if (firstCard === null) {
             firstCard = index;
@@ -49,29 +47,33 @@ export function playGame(cards: string[]) {
               secondCard = null;
               clickable = true;
             } else {
-              // cardsShirts[firstCard].firstElementChild.classList.add("hide");
-              // cardsShirts[secondCard].firstElementChild.classList.add("hide");
-              // firstCard = null;
-              // secondCard = null;
-              // clickable = true;
-              if (appEl) {
-                let time = appEl.querySelector<HTMLElement>(".time");
-                if (time) renderCongratulation(appEl, time.innerText);
-              }
+              setTimeout(() => {
+                // cardsShirts[firstCard].firstElementChild.classList.add("hide");
+                // cardsShirts[secondCard].firstElementChild.classList.add("hide");
+                // firstCard = null;
+                // secondCard = null;
+                // clickable = true;
+                if (appEl) {
+                  let time = appEl.querySelector<HTMLElement>(".time");
+                  if (time) renderCongratulation(appEl, time.innerText);
+                }
+              }, 600);
             }
             if (
               Array.from(cardsShirts).every((cardsShirt) =>
                 cardsShirt.classList.contains("success")
               )
             ) {
-              if (appEl) {
-                let time = appEl.querySelector<HTMLElement>(".time");
-                if (time) renderCongratulation(appEl, time.innerText, "win");
-              };
-            };
-          };
-        };
-      })
-    })
-  };
-};
+              setTimeout(() => {
+                if (appEl) {
+                  let time = appEl.querySelector<HTMLElement>(".time");
+                  if (time) renderCongratulation(appEl, time.innerText, "win");
+                }
+              }, 600);
+            }
+          }
+        }
+      });
+    });
+  }
+}
