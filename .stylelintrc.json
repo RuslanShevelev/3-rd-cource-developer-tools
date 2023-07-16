@@ -1,6 +1,7 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
   "rules": {
-    "font-family-no-missing-generic-family-keyword": null
+    "font-family-no-missing-generic-family-keyword": null,
+    "number-max-precision": 10
   }
 }

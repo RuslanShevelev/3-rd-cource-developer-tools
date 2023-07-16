@@ -1,4 +1,4 @@
-import _ from "lodash";
+import * as _ from "lodash";
 // const shuffle = (array) => {
 //   let currentIndex = array.length,
 //     randomIndex;
@@ -16,8 +16,8 @@ import _ from "lodash";
 // const duplicateArray = (array) =>
 //   array.reduce((res, current) => res.concat([current, current]), []);
 
-export const getCardsArray = (difficult) => {
-  const cards = [
+export const getCardsArray = (difficult:number) => {
+  const cards: string[] = [
     "./assets/images/cards/6 бубны.png",
     "./assets/images/cards/6 крести.png",
     "./assets/images/cards/6 пики.png",
@@ -59,4 +59,25 @@ export const getCardsArray = (difficult) => {
   const slicedArray = shuffledCards.slice(0, difficult / 2);
   const duplicatedArray = _.concat(slicedArray, slicedArray);
   return _.shuffle(duplicatedArray);
+};
+
+export function initTimer(element:HTMLElement) {
+  // eslint-disable-next-line no-unused-vars
+  let hour = 0;
+  let min = 0;
+  let sec = 0;
+  setInterval(() => {
+    sec++;
+    if (sec === 60) {
+      min++;
+      sec = 0;
+    }
+    if (min === 60) {
+      hour++;
+      min = 0;
+    }
+    element.innerText = `${min < 10 ? "0" + min : min}.${
+      sec < 10 ? "0" + sec : sec
+    }`;
+  }, 1000);
 };
