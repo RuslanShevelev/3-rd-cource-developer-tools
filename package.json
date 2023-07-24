@@ -11,7 +11,7 @@
     "lint:js": "eslint ./*.js",
     "lint:css": "stylelint ./*.css",
     "prepare": "husky install",
-    "lint": "npm run lint:js && npm run lint:css",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:ts",
     "lint:ts": "tsc --noEmit"
   },
   "author": "",
