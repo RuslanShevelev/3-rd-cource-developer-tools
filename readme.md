@@ -5,4 +5,16 @@
 количество карточек, которые будут показаны на игровом экране.
 Если были найдены все пары, игрок побеждает.
 
-## Ссылка на приложение:
+## Ссылка на приложение: 
+
+https://ruslanshevelev.github.io/3-rd-cource-developer-tools
+
+### Технологии, используемые при разработке проекта:
+
+- typescript 
+- webpack
+- eslint 
+- stylelint 
+- prettier
+- jest
+- husky
